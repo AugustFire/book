@@ -9,4 +9,8 @@ gitbook serve
 
 #将目录推送gh-pages到远程分之
 gh-pages -d _book/
+
+#安装book-json的依赖
+gitbook install
+
 ```
