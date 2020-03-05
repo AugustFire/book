@@ -1,0 +1,883 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>5.虚拟机类加载 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="6.Jemter.html" />
+    
+    
+    <link rel="prev" href="4.虚拟机执行子系统.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Ch1·Java基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" >
+            
+                <span>
+            
+                    
+                    1.java_数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../1.java_数据结构/1.hashmap源码分析.html">
+            
+                <a href="../1.java_数据结构/1.hashmap源码分析.html">
+            
+                    
+                    1-1小节:hashmap源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" >
+            
+                <span>
+            
+                    
+                    2.java_多线程
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" >
+            
+                <span>
+            
+                    
+                    3.java_并发容器
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    4.java_jvm
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="1.java内存与溢出.html">
+            
+                <a href="1.java内存与溢出.html">
+            
+                    
+                    1.java内存与溢出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="2.垃圾回收与内存管理.html">
+            
+                <a href="2.垃圾回收与内存管理.html">
+            
+                    
+                    2.垃圾回收与内存管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.3" data-path="3.虚拟机监控与故障处理.html">
+            
+                <a href="3.虚拟机监控与故障处理.html">
+            
+                    
+                    3.虚拟机监控与故障处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.4" data-path="4.虚拟机执行子系统.html">
+            
+                <a href="4.虚拟机执行子系统.html">
+            
+                    
+                    4.虚拟机执行子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.4.5" data-path="5.虚拟机类加载.html">
+            
+                <a href="5.虚拟机类加载.html">
+            
+                    
+                    5.虚拟机类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.6" data-path="6.Jemter.html">
+            
+                <a href="6.Jemter.html">
+            
+                    
+                    6.Jemter
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Ch2·数据库基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" >
+            
+                <span>
+            
+                    
+                    1.MySQL
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../../Ch2.数据库基础/1.MySQL/1.MySQL本地事务.html">
+            
+                <a href="../../Ch2.数据库基础/1.MySQL/1.MySQL本地事务.html">
+            
+                    
+                    1.MySQL本地事物
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../../Ch2.数据库基础/1.MySQL/2.MySQL主从复制.html">
+            
+                <a href="../../Ch2.数据库基础/1.MySQL/2.MySQL主从复制.html">
+            
+                    
+                    1.MySQL主从复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Ch3.分布式组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    1.ZooKeeper
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" >
+            
+                <span>
+            
+                    
+                    2.Redis
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../../Ch3.分布式组件/2.Redis/1.redis基础.html">
+            
+                <a href="../../Ch3.分布式组件/2.Redis/1.redis基础.html">
+            
+                    
+                    1.redis基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../../Ch3.分布式组件/2.Redis/2.redis基础扩展.html">
+            
+                <a href="../../Ch3.分布式组件/2.Redis/2.redis基础扩展.html">
+            
+                    
+                    2.redis基础扩展
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="../../Ch3.分布式组件/2.Redis/3.redis队列.html">
+            
+                <a href="../../Ch3.分布式组件/2.Redis/3.redis队列.html">
+            
+                    
+                    3.redis队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="../../Ch3.分布式组件/2.Redis/4.redis集群.html">
+            
+                <a href="../../Ch3.分布式组件/2.Redis/4.redis集群.html">
+            
+                    
+                    4.redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.5" data-path="../../Ch3.分布式组件/2.Redis/5.redis-sentinel.html">
+            
+                <a href="../../Ch3.分布式组件/2.Redis/5.redis-sentinel.html">
+            
+                    
+                    5.redis-sentinel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.6" data-path="../../Ch3.分布式组件/2.Redis/6.redis锁.html">
+            
+                <a href="../../Ch3.分布式组件/2.Redis/6.redis锁.html">
+            
+                    
+                    6.redis锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    x.分布式事物
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../../Ch3.分布式组件/x.分布式事务/1.分布式事务.html">
+            
+                <a href="../../Ch3.分布式组件/x.分布式事务/1.分布式事务.html">
+            
+                    
+                    1.分布式事物
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Ch4.分布式缓存
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Ch5.搜索
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Ch6.框架
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Ch7.网络协议
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Ch8.设计模式
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Ch9.自动化运维
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" >
+            
+                <span>
+            
+                    
+                    1.nginx
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" >
+            
+                <span>
+            
+                    
+                    2.docker
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" >
+            
+                <span>
+            
+                    
+                    7788
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.3.1" data-path="../../Ch9.部署/7788/1.git.html">
+            
+                <a href="../../Ch9.部署/7788/1.git.html">
+            
+                    
+                    1.git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3.2" data-path="../../Ch9.部署/7788/2.gitbook.html">
+            
+                <a href="../../Ch9.部署/7788/2.gitbook.html">
+            
+                    
+                    2.gitbook
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Chx.操作系统
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >5.虚拟机类加载</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x865A;&#x62DF;&#x673A;&#x7C7B;&#x52A0;&#x8F7D;">&#x865A;&#x62DF;&#x673A;&#x7C7B;&#x52A0;&#x8F7D;</h2>
+<h2 id="&#x7C7B;&#x52A0;&#x8F7D;&#x7684;&#x65F6;&#x673A;">&#x7C7B;&#x52A0;&#x8F7D;&#x7684;&#x65F6;&#x673A;</h2>
+<p>&#x7C7B;&#x4ECE;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x865A;&#x62DF;&#x673A;&#x5185;&#x5B58;&#x5F00;&#x59CB;,&#x5230;&#x88AB;&#x5378;&#x8F7D;&#x51FA;&#x5185;&#x5B58;&#x4E3A;&#x6B62;,&#x751F;&#x547D;&#x5468;&#x671F;&#x5305;&#x62EC;:</p>
+<p>&#x2460;&#x52A0;&#x8F7D;  -&gt;  |&#x2461;&#x9A8C;&#x8BC1;  -&gt;  &#x2462;&#x51C6;&#x5907;  -&gt;  &#x2463;&#x89E3;&#x6790;|  -&gt;  &#x2464;&#x521D;&#x59CB;&#x5316; -&gt;  &#x2465;&#x4F7F;&#x7528;  -&gt;  &#x2466;&#x5378;&#x8F7D;
+            |&#x2190;       &#x8FDE;&#x63A5;&#x9636;&#x6BB5;link       &#x2192;|  </p>
+<pre><code class="lang-text">
+&#x865A;&#x62DF;&#x673A;&#x89C4;&#x8303;&#x6CA1;&#x6709;&#x5F3A;&#x5236;&#x7EA6;&#x675F;&#x7C7B;&#x52A0;&#x8F7D;&#x7684;&#x65F6;&#x673A;;
+&#x4E25;&#x683C;&#x89C4;&#x5B9A;&#x4E86;&#x6709;&#x4E14;&#x53EA;&#x6709;&#x4E94;&#x79CD;&#x60C5;&#x51B5;&#x5FC5;&#x987B;&#x7ACB;&#x5373;&#x5BF9;&#x7C7B;&#x8FDB;&#x884C; (&#x6709;&#x4E14;&#x53EA;&#x6709;)
+    &#x2464;&#x521D;&#x59CB;&#x5316;:
+    1.&#x9047;&#x5230; new,getstatic,putstatic,invokestatic&#x8FD9;4&#x6761;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;,&#x5982;&#x679C;&#x7C7B;&#x6CA1;&#x521D;&#x59CB;&#x5316;,&#x5219;&#x89E6;&#x53D1;&#x521D;&#x59CB;&#x5316;,&#x573A;&#x666F;:new&#x5173;&#x952E;&#x5B57;&#x5B9E;&#x4F8B;&#x5316;,&#x8BFB;&#x53D6;&#x6216;&#x8005;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x5B57;&#x6BB5;,&#x4E00;&#x8D77;&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;
+    2.&#x4F7F;&#x7528;java.lang.reflect&#x5BF9;&#x7C7B;&#x8FDB;&#x884C;&#x53CD;&#x5C04;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;,&#x5982;&#x679C;&#x7C7B;&#x6CA1;&#x521D;&#x59CB;&#x5316;,&#x5219;&#x9700;&#x8981;&#x5148;&#x89E6;&#x53D1;
+    3.&#x5F53;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x7C7B;,&#x5982;&#x679C;&#x7236;&#x7C7B;&#x6CA1;&#x521D;&#x59CB;&#x5316;,&#x5219;&#x5148;&#x89E6;&#x53D1;&#x5668;&#x7236;&#x7C7B;&#x521D;&#x59CB;&#x5316;
+    4.&#x5F53;&#x865A;&#x62DF;&#x673A;&#x542F;&#x52A8;,&#x7528;&#x6237;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x8981;&#x4E00;&#x4E2A;&#x8981;&#x6267;&#x884C;&#x7684;&#x4E3B;&#x7C7B;,&#x865A;&#x62DF;&#x673A;&#x4F1A;&#x521D;&#x59CB;&#x5316;&#x8FD9;&#x4E2A;&#x7C7B;
+    5.&#x5982;&#x679C;&#x4E00;&#x4E2A;java.lang.invork.methodHandle&#x5B9E;&#x4F8B;&#x6700;&#x540E;&#x7684;&#x89E3;&#x6790;&#x7ED3;&#x679C;REF_getStatic,REF_getStatic,REF_getStatic&#x7684;&#x65B9;&#x6CD5;&#x53E5;&#x67C4;,&#x5E76;&#x4E14;&#x8FD9;&#x4E2A;&#x53E5;&#x67C4;&#x6240;&#x5BF9;&#x5E94;&#x7684;&#x7C7B;&#x6CA1;&#x8FDB;&#x884C;&#x8FC7;&#x521D;&#x59CB;&#x5316;,&#x5219;&#x9700;&#x8981;&#x89E6;&#x53D1;&#x5176;&#x521D;&#x59CB;&#x5316;
+</code></pre>
+<h3 id="1&#x52A0;&#x8F7D;">1.&#x52A0;&#x8F7D;</h3>
+<pre><code class="lang-text">`&#x52A0;&#x8F7D;`&#x662F;`&#x7C7B;&#x52A0;&#x8F7D;`&#x8FC7;&#x7A0B;&#x7684;&#x4E00;&#x4E2A;&#x9636;&#x6BB5;
+&#x52A0;&#x8F7D;&#x9636;&#x6BB5;,&#x865A;&#x62DF;&#x673A;&#x5B8C;&#x6210;&#x4EE5;&#x4E0B;&#x4E09;&#x4EF6;&#x4E8B;:
+1.&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x5168;&#x9650;&#x5B9A;&#x540D;&#x6765;&#x83B7;&#x53D6;&#x6B64;&#x7C7B;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x5B57;&#x8282;&#x6D41;
+    &#x8865;&#x5145;:
+        -&#x4ECE;ZIP&#x5305;&#x4E2D;&#x8BFB;&#x53D6;,&#x6210;&#x4E3A;&#x65E5;&#x540E;WAR,JAR&#x5305;&#x683C;&#x5F0F;&#x7684;&#x57FA;&#x7840;
+        -&#x4ECE;&#x7F51;&#x7EDC;&#x4E2D;&#x8BFB;&#x53D6;,&#x5178;&#x578B;&#x7684;Applet
+        -&#x8FD0;&#x884C;&#x65F6;&#x8BA1;&#x7B97;&#x751F;&#x6210;,&#x8FD9;&#x79CD;&#x573A;&#x666F;&#x4F7F;&#x7528;&#x6700;&#x591A;&#x7684;&#x5C31;&#x662F;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x6280;&#x672F;,java.lang.reflect.Proxy&#x4E2D;
+        -&#x7531;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x751F;&#x6210;,&#x5178;&#x578B;&#x7684;JSP
+        -&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x8BFB;&#x53D6;,&#x5C11;&#x89C1;&#x7684;&#x5F88;
+2.&#x5C06;&#x8FD9;&#x4E2A;&#x5B57;&#x8282;&#x6D41;&#x6240;&#x4EE3;&#x8868;&#x9759;&#x6001;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#x8F6C;&#x5316;&#x4E3A;&#x65B9;&#x6CD5;&#x533A;&#x7684;&#x8FD0;&#x884C;&#x65F6;&#x6570;&#x636E;&#x7ED3;&#x6784;
+3.&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x4EE3;&#x8868;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;java.lang.class&#x5BF9;&#x8C61;,&#x4F5C;&#x4E3A;&#x65B9;&#x6CD5;&#x533A;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x5404;&#x79CD;&#x6570;&#x636E;&#x7684;&#x8BBF;&#x95EE;&#x5165;&#x53E3;.
+</code></pre>
+<h3 id="2&#x9A8C;&#x8BC1;">2.&#x9A8C;&#x8BC1;</h3>
+<pre><code class="lang-txt">&#x8FD9;&#x662F;&#x865A;&#x62DF;&#x673A;&#x5B89;&#x5168;&#x4FDD;&#x8BC1;&#x4E2D;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x6B65;:
+&#x9A8C;&#x8BC1;&#x662F;&#x8FDE;&#x63A5;&#x9636;&#x6BB5;&#x7684;&#x7B2C;&#x4E00;&#x6B65;,&#x8FD9;&#x4E00;&#x9636;&#x6BB5;&#x7684;&#x76EE;&#x7684;&#x4E3A;&#x4E3A;&#x4E86;&#x786E;&#x4FDD;Class&#x6587;&#x4EF6;&#x7684;&#x5B57;&#x8282;&#x6D41;&#x5305;&#x542B;&#x7684;&#x4FE1;&#x606F;&#x7B26;&#x5408;&#x5F53;&#x524D;&#x865A;&#x62DF;&#x673A;&#x7684;&#x8981;&#x6C42;,&#x5E76;&#x4E0D;&#x4F1A;&#x5371;&#x5BB3;&#x865A;&#x62DF;&#x673A;&#x7684;&#x5B89;&#x5168;
+
+1.&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x9A8C;&#x8BC1;
+2.&#x5143;&#x6570;&#x636E;&#x9A8C;&#x8BC1;&#x5B57;&#x8282;&#x7801;&#x9A8C;&#x8BC1;
+3.&#x5B57;&#x8282;&#x7801;&#x9A8C;&#x8BC1;
+4.&#x7B26;&#x53F7;&#x5F15;&#x7528;&#x9A8C;&#x8BC1;
+</code></pre>
+<h3 id="3&#x51C6;&#x5907;">3.&#x51C6;&#x5907;</h3>
+<pre><code class="lang-text">&#x51C6;&#x5907;&#x9636;&#x6BB5;&#x662F;&#x6B63;&#x5F0F;&#x4E3A;&#x7C7B;&#x53D8;&#x91CF;&#x5206;&#x914D;&#x5185;&#x5B58;,&#x5E76;&#x8BBE;&#x7F6E;&#x521D;&#x59CB;&#x503C;&#x7684;&#x9636;&#x6BB5;(&#x4EC5;&#x5305;&#x62EC;static&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;),
+&#x5176;&#x6B21;&#x8FD9;&#x91CC;&#x6240;&#x8BF4;&#x7684;&#x521D;&#x59CB;&#x503C;,&quot;&#x901A;&#x5E38;&#x60C5;&#x51B5;&quot;&#x4E0B;,&#x662F;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x96F6;&#x503C;
+`public static int value = 123`
+&#x8FD9;&#x91CC;&#x51C6;&#x5907;&#x9636;&#x6BB5;&#x8FC7;&#x540E;&#x7684;&#x521D;&#x59CB;&#x503C;&#x662F; 0, &#x800C;&#x4E0D;&#x662F;123,
+&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5C1A;&#x672A;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x4EFB;&#x4F55;java&#x65B9;&#x6CD5;
+</code></pre>
+<h3 id="4&#x89E3;&#x6790;">4.&#x89E3;&#x6790;</h3>
+<pre><code class="lang-txt">&#x89E3;&#x6790;&#x9636;&#x6BB5;&#x662F;&#x865A;&#x62DF;&#x673A;&#x5C06;&#x5E38;&#x91CF;&#x6C60;&#x5185;&#x7684;&#x7B26;&#x53F7;&#x5F15;&#x7528;&#x66FF;&#x6362;&#x4E3A;&#x76F4;&#x63A5;&#x5F15;&#x7528;&#x7684;&#x8FC7;&#x7A0B;,
+</code></pre>
+<h2 id="&#x7C7B;&#x52A0;&#x8F7D;&#x5668;">&#x7C7B;&#x52A0;&#x8F7D;&#x5668;</h2>
+<blockquote>
+<p>&#x7C7B;&#x52A0;&#x8F7D;&#x9636;&#x6BB5;&#x4E2D;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x5168;&#x9650;&#x5B9A;&#x540D;&#x6765;&#x83B7;&#x53D6;&#x63CF;&#x8FF0;&#x6B64;&#x7C7B;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x5B57;&#x8282;&#x6D41;,&#x8FD9;&#x4E2A;&#x52A8;&#x4F5C;&#x653E;&#x5230;Java&#x865A;&#x62DF;&#x673A;&#x5916;&#x90E8;&#x53BB;&#x5B9E;&#x73B0;,&#x4EE5;&#x4FBF;
+&#x8BA9;&#x5F15;&#x7528;&#x7A0B;&#x5E8F;&#x81EA;&#x5DF1;&#x51B3;&#x5B9A;&#x5982;&#x4F55;&#x53BB;&#x83B7;&#x53D6;&#x6240;&#x9700;&#x8981;&#x7684;&#x7C7B;,&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x52A8;&#x4F5C;&#x7684;&#x4EE3;&#x7801;&#x6A21;&#x5757;&#x79F0;<strong>&#x7C7B;&#x52A0;&#x8F7D;&#x5668;</strong>
+```text
+&#x5BF9;&#x4E8E;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x7C7B;,&#x90FD;&#x9700;&#x8981;&#x7531;&#x52A0;&#x8F7D;&#x5B83;&#x7684;&#x7C7B;&#x548C;&#x8FD9;&#x4E2A;&#x7C7B;&#x672C;&#x8EAB;&#x4E00;&#x540C;&#x786E;&#x7ACB;&#x5176;&#x5728;java&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x7684;&#x552F;&#x4E00;&#x6027;.
+&#x4E00;&#x4E2A;&#x7C7B;&#x6587;&#x4EF6;&#x88AB;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x52A0;&#x8F7D;,&#x662F;&#x4E24;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x7C7B;</p>
+</blockquote>
+<pre><code>
+### &#x53CC;&#x4EB2;&#x59D4;&#x6D3E;
+```text
+&#x4ECE;Java&#x865A;&#x62DF;&#x673A;&#x7684;&#x89D2;&#x5EA6;,&#x53EA;&#x5B58;&#x5728;&#x4E24;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;:   
+    1.&#x542F;&#x52A8;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;(C++&#x5B9E;&#x73B0;,&#x5C5E;&#x4E8E;jvm&#x81EA;&#x8EAB;&#x90E8;&#x5206;)    
+    2.&#x5176;&#x4ED6;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;,&#x8FD9;&#x4E9B;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x90FD;&#x7531;Java&#x8BED;&#x8A00;&#x5B9E;&#x73B0;,&#x72EC;&#x7ACB;&#x4E8E;&#x865A;&#x62DF;&#x673A;&#x5916;&#x90E8;,&#x5E76;&#x4E14;&#x5168;&#x90FD;&#x7EE7;&#x627F;&#x81EA;&#x62BD;&#x8C61;&#x7C7B;java.lang.ClassLoader
+</code></pre><p>&#x66F4;&#x7CBE;&#x7EC6;&#x7684;&#x5212;&#x5206;</p>
+<pre><code class="lang-text">&#x542F;&#x52A8;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;:BootStrap ClassLoader                                      
+            &#x8D1F;&#x8D23;&#x52A0;&#x8F7D;%JAVA_HOME%/lib,&#x5982;rt.jar&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x7C7B;,&#x5E76;&#x4E14;&#x662F;&#x865A;&#x62DF;&#x673A;&#x8BC6;&#x522B;&#x7684;
+
+
+&#x6269;&#x5C55;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;:Extension ClassLoader[sum.misc.Launcher$ExtClassLoader]    
+            &#x8D1F;&#x8D23;&#x52A0;&#x8F7D;%JAVA_HOME%/lib/ext&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x7C7B;,&#x53EF;&#x4EE5;&#x88AB;&#x5F00;&#x53D1;&#x8005;&#x76F4;&#x63A5;&#x4F7F;&#x7528;
+
+
+&#x5E94;&#x7528;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;:Extension ClassLoader[sum.misc.Launcher$AppClassLoader]    
+            &#x8FD9;&#x4E2A;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x662F;ClassLoader&#x4E2D;getSystemClassLoader()&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;,
+            &#x6240;&#x4EE5;&#x4E00;&#x822C;&#x79F0;&#x4E3A;&#x7CFB;&#x7EDF;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;,&#x8D1F;&#x8D23;&#x52A0;&#x8F7D;&#x7528;&#x6237;&#x7C7B;&#x8DEF;&#x5F84;&#x4E0A;&#x6240;&#x6307;&#x5B9A;&#x7684;&#x7C7B;&#x5E93;.
+            &#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;,&#x662F;&#x8FD9;&#x4E2A;&#x5E94;&#x7528;&#x9ED8;&#x8BA4;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="4.虚拟机执行子系统.html" class="navigation navigation-prev " aria-label="Previous page: 4.虚拟机执行子系统">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="6.Jemter.html" class="navigation navigation-next " aria-label="Next page: 6.Jemter">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"5.虚拟机类加载","level":"1.2.4.5","depth":3,"next":{"title":"6.Jemter","level":"1.2.4.6","depth":3,"path":"Ch1.Java基础/4.java_jvm/6.Jemter.md","ref":"Ch1.Java基础/4.java_jvm/6.Jemter.md","articles":[]},"previous":{"title":"4.虚拟机执行子系统","level":"1.2.4.4","depth":3,"path":"Ch1.Java基础/4.java_jvm/4.虚拟机执行子系统.md","ref":"Ch1.Java基础/4.java_jvm/4.虚拟机执行子系统.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","livereload"],"pluginsConfig":{"expandable-chapters":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Ch1.Java基础/4.java_jvm/5.虚拟机类加载.md","mtime":"2020-03-01T04:00:05.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-05T12:08:17.368Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
