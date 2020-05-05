@@ -40,6 +40,7 @@
         * [1.git](Ch9.部署/7788/1.git.md)   
         * [2.gitbook](Ch9.部署/7788/2.gitbook.md)   
 * [Chx.操作系统]()
+    * [1.linux常用命令](Chx.操作系统/1.linux常用命令.md)
 
 
 
