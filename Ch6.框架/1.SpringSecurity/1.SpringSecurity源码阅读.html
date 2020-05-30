@@ -1,0 +1,1162 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1.SpringSecurity核心源码 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="2.SpringSecurityOAuth2源码阅读.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Ch1·Java基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" >
+            
+                <span>
+            
+                    
+                    1.java_数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../../Ch1.Java基础/1.java_数据结构/1.hashmap源码分析.html">
+            
+                <a href="../../Ch1.Java基础/1.java_数据结构/1.hashmap源码分析.html">
+            
+                    
+                    1-1小节:hashmap源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" >
+            
+                <span>
+            
+                    
+                    2.java_多线程
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" >
+            
+                <span>
+            
+                    
+                    3.java_并发容器
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    4.java_jvm
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="../../Ch1.Java基础/4.java_jvm/1.java内存与溢出.html">
+            
+                <a href="../../Ch1.Java基础/4.java_jvm/1.java内存与溢出.html">
+            
+                    
+                    1.java内存与溢出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="../../Ch1.Java基础/4.java_jvm/2.垃圾回收与内存管理.html">
+            
+                <a href="../../Ch1.Java基础/4.java_jvm/2.垃圾回收与内存管理.html">
+            
+                    
+                    2.垃圾回收与内存管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.3" data-path="../../Ch1.Java基础/4.java_jvm/3.虚拟机监控与故障处理.html">
+            
+                <a href="../../Ch1.Java基础/4.java_jvm/3.虚拟机监控与故障处理.html">
+            
+                    
+                    3.虚拟机监控与故障处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.4" data-path="../../Ch1.Java基础/4.java_jvm/4.虚拟机执行子系统.html">
+            
+                <a href="../../Ch1.Java基础/4.java_jvm/4.虚拟机执行子系统.html">
+            
+                    
+                    4.虚拟机执行子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.5" data-path="../../Ch1.Java基础/4.java_jvm/5.虚拟机类加载.html">
+            
+                <a href="../../Ch1.Java基础/4.java_jvm/5.虚拟机类加载.html">
+            
+                    
+                    5.虚拟机类加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.6" data-path="../../Ch1.Java基础/4.java_jvm/6.Jemter.html">
+            
+                <a href="../../Ch1.Java基础/4.java_jvm/6.Jemter.html">
+            
+                    
+                    6.Jemter
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Ch2·数据库基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" >
+            
+                <span>
+            
+                    
+                    1.MySQL
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../../Ch2.数据库基础/1.MySQL/1.MySQL本地事务.html">
+            
+                <a href="../../Ch2.数据库基础/1.MySQL/1.MySQL本地事务.html">
+            
+                    
+                    1.MySQL本地事物
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../../Ch2.数据库基础/1.MySQL/2.MySQL主从复制.html">
+            
+                <a href="../../Ch2.数据库基础/1.MySQL/2.MySQL主从复制.html">
+            
+                    
+                    1.MySQL主从复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Ch3.分布式组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    1.ZooKeeper
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" >
+            
+                <span>
+            
+                    
+                    2.Redis
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../../Ch3.分布式组件/2.Redis/1.redis基础.html">
+            
+                <a href="../../Ch3.分布式组件/2.Redis/1.redis基础.html">
+            
+                    
+                    1.redis基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../../Ch3.分布式组件/2.Redis/2.redis基础扩展.html">
+            
+                <a href="../../Ch3.分布式组件/2.Redis/2.redis基础扩展.html">
+            
+                    
+                    2.redis基础扩展
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="../../Ch3.分布式组件/2.Redis/3.redis队列.html">
+            
+                <a href="../../Ch3.分布式组件/2.Redis/3.redis队列.html">
+            
+                    
+                    3.redis队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="../../Ch3.分布式组件/2.Redis/4.redis集群.html">
+            
+                <a href="../../Ch3.分布式组件/2.Redis/4.redis集群.html">
+            
+                    
+                    4.redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.5" data-path="../../Ch3.分布式组件/2.Redis/5.redis-sentinel.html">
+            
+                <a href="../../Ch3.分布式组件/2.Redis/5.redis-sentinel.html">
+            
+                    
+                    5.redis-sentinel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.6" data-path="../../Ch3.分布式组件/2.Redis/6.redis锁.html">
+            
+                <a href="../../Ch3.分布式组件/2.Redis/6.redis锁.html">
+            
+                    
+                    6.redis锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    x.分布式事物
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../../Ch3.分布式组件/x.分布式事务/1.分布式事务.html">
+            
+                <a href="../../Ch3.分布式组件/x.分布式事务/1.分布式事务.html">
+            
+                    
+                    1.分布式事物
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Ch4.分布式缓存
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Ch5.搜索
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Ch6.框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" >
+            
+                <span>
+            
+                    
+                    1.spring Security
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.7.1.1" data-path="1.SpringSecurity源码阅读.html">
+            
+                <a href="1.SpringSecurity源码阅读.html">
+            
+                    
+                    1.SpringSecurity核心源码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="2.SpringSecurityOAuth2源码阅读.html">
+            
+                <a href="2.SpringSecurityOAuth2源码阅读.html">
+            
+                    
+                    2.SpringSecurityOauth2核心源码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Ch7.网络协议
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Ch8.设计模式
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Ch9.自动化运维
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" >
+            
+                <span>
+            
+                    
+                    1.nginx
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" >
+            
+                <span>
+            
+                    
+                    2.docker
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" >
+            
+                <span>
+            
+                    
+                    7788
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.3.1" data-path="../../Ch9.部署/7788/1.git.html">
+            
+                <a href="../../Ch9.部署/7788/1.git.html">
+            
+                    
+                    1.git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3.2" data-path="../../Ch9.部署/7788/2.gitbook.html">
+            
+                <a href="../../Ch9.部署/7788/2.gitbook.html">
+            
+                    
+                    2.gitbook
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Chx.操作系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../../Chx.操作系统/1.linux常用命令.html">
+            
+                <a href="../../Chx.操作系统/1.linux常用命令.html">
+            
+                    
+                    1.linux常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >1.SpringSecurity核心源码</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="springsecurity&#x57FA;&#x672C;&#x539F;&#x7406;">SpringSecurity&#x57FA;&#x672C;&#x539F;&#x7406;</h1>
+<h2 id="&#x5F15;&#x8A00;">&#x5F15;&#x8A00;</h2>
+<pre><code class="lang-text">    &#x5E94;&#x7528;Spring Security&#x5230;&#x9879;&#x76EE;&#x6709;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x4E86;,&#x7279;&#x6B64;&#x8BB2;&#x63A2;&#x7D22;&#x8FC7;&#x7A0B;&#x8BB0;&#x5F55;&#x5982;&#x4E0B;
+</code></pre>
+<h2 id="&#x9879;&#x76EE;&#x7248;&#x672C;">&#x9879;&#x76EE;&#x7248;&#x672C;</h2>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!--SpringBoot2.1.14--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">pom</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">pom</span>&gt;</span>
+</code></pre>
+<h2 id="1&#x8FC7;&#x6EE4;&#x5668;&#x94FE;filterchainproxy">1&#x8FC7;&#x6EE4;&#x5668;&#x94FE;FilterChainProxy</h2>
+<h3 id="11&#x5206;&#x6790;&#x65E5;&#x5FD7;">1.1&#x5206;&#x6790;&#x65E5;&#x5FD7;</h3>
+<pre><code class="lang-text">    logging:
+      level:
+        org.springframework.security: DEBUG
+</code></pre>
+<p>&#x65E5;&#x5FD7;&#x5927;&#x81F4;&#x5982;&#x4E0B;:</p>
+<pre><code class="lang-text">2020-05-13 13:59:34.955 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 1 of 15 in additional filter chain; firing Filter: &apos;WebAsyncManagerIntegrationFilter&apos;
+2020-05-13 13:59:34.955 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 2 of 15 in additional filter chain; firing Filter: &apos;SecurityContextPersistenceFilter&apos;
+2020-05-13 13:59:34.957 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 3 of 15 in additional filter chain; firing Filter: &apos;HeaderWriterFilter&apos;
+2020-05-13 13:59:34.957 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 4 of 15 in additional filter chain; firing Filter: &apos;CsrfFilter&apos;
+2020-05-13 13:59:34.958 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 5 of 15 in additional filter chain; firing Filter: &apos;LogoutFilter&apos;
+2020-05-13 13:59:34.958 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 6 of 15 in additional filter chain; firing Filter: &apos;UsernamePasswordAuthenticationFilter&apos;
+2020-05-13 13:59:42.659 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 7 of 15 in additional filter chain; firing Filter: &apos;DefaultLoginPageGeneratingFilter&apos;
+2020-05-13 13:59:42.659 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 8 of 15 in additional filter chain; firing Filter: &apos;DefaultLogoutPageGeneratingFilter&apos;
+2020-05-13 13:59:42.659 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 9 of 15 in additional filter chain; firing Filter: &apos;BasicAuthenticationFilter&apos;
+2020-05-13 13:59:42.659 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 10 of 15 in additional filter chain; firing Filter: &apos;RequestCacheAwareFilter&apos;
+2020-05-13 13:59:42.660 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 11 of 15 in additional filter chain; firing Filter: &apos;SecurityContextHolderAwareRequestFilter&apos;
+2020-05-13 13:59:42.660 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 12 of 15 in additional filter chain; firing Filter: &apos;AnonymousAuthenticationFilter&apos;
+2020-05-13 13:59:42.661 DEBUG 31516 --- [nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Populated SecurityContextHolder with anonymous token: &apos;org.springframework.security.authentication.AnonymousAuthenticationToken@3db8c1b1: Principal: anonymousUser; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ANONYMOUS&apos;
+2020-05-13 13:59:42.661 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 13 of 15 in additional filter chain; firing Filter: &apos;SessionManagementFilter&apos;
+2020-05-13 13:59:42.662 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 14 of 15 in additional filter chain; firing Filter: &apos;ExceptionTranslationFilter&apos;
+2020-05-13 13:59:42.662 DEBUG 31516 --- [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : /hello at position 15 of 15 in additional filter chain; firing Filter: &apos;FilterSecurityInterceptor&apos;
+2020-05-13 13:59:42.727 DEBUG 31516 --- [nio-8080-exec-1] o.s.s.w.a.ExceptionTranslationFilter     : Access is denied (user is anonymous); redirecting to authentication entry point
+</code></pre>
+<h3 id="12&#x8FC7;&#x6EE4;&#x5668;&#x5206;&#x6790;">1.2&#x8FC7;&#x6EE4;&#x5668;&#x5206;&#x6790;</h3>
+<p>&#x4ECE;&#x65E5;&#x5FD7;&#x4FE1;&#x606F;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x591A;&#x5F88;&#x591A;&#x8FC7;&#x6EE4;&#x5668;,&#x9009;&#x62E9;&#x91CD;&#x8981;&#x7684;&#x8FC7;&#x6EE4;&#x5668;&#x5206;&#x6790;</p>
+<pre><code>&#x8BF7;&#x6C42; ---&gt;                                                                                                                                                     |   |
+            UsernamePasswordAuthenticationFilter    -       BasicAuthenticationFilter   -   ExceptionTranslationFilter   - FilterSecurityInterceptor       |API-SERVER|
+&#x54CD;&#x5E94; &lt;---                                                                                                                                                     |   |
+</code></pre><h4 id="usernamepasswordauthenticationfilter">UsernamePasswordAuthenticationFilter</h4>
+<p>UsernamePasswordAuthenticationFilter &#x7EE7;&#x627F; AbstractAuthenticationProcessingFilter</p>
+<p>1.&#x9605;&#x8BFB;AbstractAuthenticationProcessingFilter</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(ServletRequest req, ServletResponse res, FilterChain chain)</span>
+            <span class="hljs-keyword">throws</span> IOException, ServletException </span>{
+
+
+        <span class="hljs-comment">// &lt;1&gt;request&#x662F;&#x5426;&#x9700;&#x8981;&#x8BA4;&#x8BC1;(new AntPathRequestMatcher(&quot;/login&quot;, &quot;POST&quot;)&#x8FD9;&#x4E2A;&#x624D;&#x5339;&#x914D;)</span>
+        <span class="hljs-keyword">if</span> (!requiresAuthentication(request, response)) {
+            chain.doFilter(request, response);
+
+            <span class="hljs-keyword">return</span>;
+        }
+        Authentication authResult;
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// &lt;2&gt;&#x8C03;&#x7528;attemptAuthentication&#x65B9;&#x6CD5;(&#x8C03;&#x7528;&#x5B50;&#x7C7B;&#x7684;)</span>
+            authResult = attemptAuthentication(request, response);
+            <span class="hljs-keyword">if</span> (authResult == <span class="hljs-keyword">null</span>) {
+                <span class="hljs-comment">// return immediately as subclass has indicated that it hasn&apos;t completed</span>
+                <span class="hljs-comment">// authentication</span>
+                <span class="hljs-keyword">return</span>;
+            }
+            sessionStrategy.onAuthentication(authResult, request, response);
+        }
+        <span class="hljs-keyword">catch</span> (InternalAuthenticationServiceException | AuthenticationException  failed) {
+
+            <span class="hljs-comment">// &lt;3&gt;&#x8C03;&#x7528;&#x5931;&#x8D25;&#x5904;&#x7406;&#x5668;</span>
+            unsuccessfulAuthentication(request, response, failed);
+
+            <span class="hljs-keyword">return</span>;
+        }
+        <span class="hljs-keyword">if</span> (continueChainBeforeSuccessfulAuthentication) {
+            chain.doFilter(request, response);
+        }
+
+        <span class="hljs-comment">// &lt;4&gt;&#x8C03;&#x7528;&#x6210;&#x529F;&#x5904;&#x7406;&#x5668;</span>
+        successfulAuthentication(request, response, chain, authResult);
+    }
+</code></pre>
+<p>2.&#x9605;&#x8BFB;UsernamePasswordAuthenticationFilter&#x7684;attemptAuthentication</p>
+<pre><code class="lang-java">    <span class="hljs-function"><span class="hljs-keyword">public</span> Authentication <span class="hljs-title">attemptAuthentication</span><span class="hljs-params">(HttpServletRequest request,HttpServletResponse response)</span> </span>{
+
+        <span class="hljs-comment">// &#x8BFB;&#x53D6;username</span>
+        String username = obtainUsername(request);
+        <span class="hljs-comment">// &#x8BFB;&#x53D6;password</span>
+        String password = obtainPassword(request);
+
+        <span class="hljs-comment">// &#x521D;&#x6B65;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x672A;&#x8BA4;&#x8BC1;&#x6210;&#x529F;&#x7684;UsernamePasswordAuthenticationToken</span>
+        UsernamePasswordAuthenticationToken authRequest = <span class="hljs-keyword">new</span> UsernamePasswordAuthenticationToken(
+                username, password);
+
+        <span class="hljs-comment">// &#x5141;&#x8BB8;&#x5B50;&#x7C7B;&#x53BB;&#x8BBE;&#x7F6E;&#x66F4;&#x4FE1;&#x606F;&#x7684;&#x4FE1;&#x606F;(remoteAddress.sessionId..)</span>
+        setDetails(request, authRequest);
+        <span class="hljs-comment">// &#x8BA4;&#x8BC1;&#x7684;&#x91CD;&#x70B9;&#x5728;&#x8FD9;&#x91CC;()</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.getAuthenticationManager().authenticate(authRequest);
+    }
+</code></pre>
+<p>3.&#x9605;&#x8BFB;AuthenticationManager</p>
+<pre><code class="lang-java">    <span class="hljs-comment">// &#x8FD9;&#x4E2A;&#x662F;&#x8BA4;&#x8BC1;&#x7BA1;&#x7406;&#x5668;&#x7684;&#x9876;&#x7EA7;&#x63A5;&#x53E3;&#x4E86;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">AuthenticationManager</span> </span>{
+
+    <span class="hljs-comment">// &#x552F;&#x4E00;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x8BA4;&#x8BC1;</span>
+    <span class="hljs-function">Authentication <span class="hljs-title">authenticate</span><span class="hljs-params">(Authentication authentication)</span> <span class="hljs-keyword">throws</span> AuthenticationException</span>;
+}
+</code></pre>
+<p>4.&#x9605;&#x8BFB;ProviderManager(AuthenticationManager&#x7684;&#x5B50;&#x7C7B;)</p>
+<pre><code class="lang-java">
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Authentication <span class="hljs-title">authenticate</span><span class="hljs-params">(Authentication authentication)</span>
+            <span class="hljs-keyword">throws</span> AuthenticationException </span>{
+
+        <span class="hljs-comment">//&#x83B7;&#x53D6;authentication&#x7684;&#x7C7B;&#x578B;(&#x76EE;&#x524D;&#x662F;UsernamePasswordAuthenticationToken)</span>
+        Class&lt;? extends Authentication&gt; toTest = authentication.getClass();
+
+        Authentication result = <span class="hljs-keyword">null</span>;
+        Authentication parentResult = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">boolean</span> debug = logger.isDebugEnabled();
+
+        <span class="hljs-comment">//&#x904D;&#x5386;&#x6240;&#x6709;&#x7684;AuthenticationProvider</span>
+        <span class="hljs-keyword">for</span> (AuthenticationProvider provider : getProviders()) {
+            <span class="hljs-comment">//&#x67E5;&#x627E;&#x80FD;&#x652F;&#x6301;&#x8FD9;&#x79CD;authentication&#x7684;AuthenticationProvider</span>
+            <span class="hljs-keyword">if</span> (!provider.supports(toTest)) {
+                <span class="hljs-keyword">continue</span>;
+
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-comment">// &#x4F7F;&#x7528;&#x7279;&#x5B9A;&#x7684;AuthenticationProvider&#x8BA4;&#x8BC1;&#x8FD9;&#x4E2A;token</span>
+                <span class="hljs-comment">// !&#x91CD;&#x70B9;&#x5728;&#x8FD9;&#x91CC;[&#x67E5;&#x770B;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;]</span>
+                result = provider.authenticate(authentication);
+                <span class="hljs-keyword">if</span> (result != <span class="hljs-keyword">null</span>) {
+                    <span class="hljs-comment">// &#x590D;&#x5236;detail</span>
+                    copyDetails(authentication, result);
+                    <span class="hljs-keyword">break</span>;
+                }
+            }
+            <span class="hljs-comment">//&#x6355;&#x83B7;&#x8BA4;&#x8BC1;&#x7684;&#x5F02;&#x5E38;</span>
+            <span class="hljs-keyword">catch</span> (AccountStatusException e) {
+                prepareException(e, authentication);
+                <span class="hljs-keyword">throw</span> e;
+            }
+            <span class="hljs-keyword">catch</span> (InternalAuthenticationServiceException e) {
+                prepareException(e, authentication);
+                <span class="hljs-keyword">throw</span> e;
+            }
+            <span class="hljs-keyword">catch</span> (AuthenticationException e) {
+                lastException = e;
+            }
+        }
+
+
+        <span class="hljs-keyword">if</span> (result != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">if</span> (eraseCredentialsAfterAuthentication
+                    &amp;&amp; (result <span class="hljs-keyword">instanceof</span> CredentialsContainer)) {
+                <span class="hljs-comment">// &#x64E6;&#x9664;&#x91CD;&#x8981;&#x5BC6;&#x7801;&#x4FE1;&#x606F;</span>
+                ((CredentialsContainer) result).eraseCredentials();
+            }
+
+            <span class="hljs-comment">// &#x53D1;&#x5E03;&#x4E8B;&#x4EF6;</span>
+            <span class="hljs-keyword">if</span> (parentResult == <span class="hljs-keyword">null</span>) {
+                eventPublisher.publishAuthenticationSuccess(result);
+            }
+            <span class="hljs-keyword">return</span> result;
+        }
+
+        <span class="hljs-comment">// Parent was null, or didn&apos;t authenticate (or throw an exception).</span>
+
+        <span class="hljs-keyword">if</span> (lastException == <span class="hljs-keyword">null</span>) {
+            lastException = <span class="hljs-keyword">new</span> ProviderNotFoundException(messages.getMessage(
+                    <span class="hljs-string">&quot;ProviderManager.providerNotFound&quot;</span>,
+                    <span class="hljs-keyword">new</span> Object[] { toTest.getName() },
+                    <span class="hljs-string">&quot;No AuthenticationProvider found for {0}&quot;</span>));
+        }
+
+        <span class="hljs-comment">// If the parent AuthenticationManager was attempted and failed than it will publish an AbstractAuthenticationFailureEvent</span>
+        <span class="hljs-comment">// This check prevents a duplicate AbstractAuthenticationFailureEvent if the parent AuthenticationManager already published it</span>
+        <span class="hljs-keyword">if</span> (parentException == <span class="hljs-keyword">null</span>) {
+            prepareException(lastException, authentication);
+        }
+
+        <span class="hljs-keyword">throw</span> lastException;
+    }
+</code></pre>
+<p>5.&#x9605;&#x8BFB;DaoAuthenticationProvider&#x7684;&#x7236;&#x7C7B;AbstractUserDetailsAuthenticationProvider</p>
+<pre><code class="lang-java">    <span class="hljs-function"><span class="hljs-keyword">public</span> Authentication <span class="hljs-title">authenticate</span><span class="hljs-params">(Authentication authentication)</span> <span class="hljs-keyword">throws</span> AuthenticationException </span>{
+
+        <span class="hljs-comment">// Determine username</span>
+        String username = (authentication.getPrincipal() == <span class="hljs-keyword">null</span>) ? <span class="hljs-string">&quot;NONE_PROVIDED&quot;</span>
+                : authentication.getName();
+
+
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-comment">//&#x6839;&#x636E;username&#x83B7;&#x53D6;user</span>
+                user = retrieveUser(username,
+                        (UsernamePasswordAuthenticationToken) authentication);
+            }
+            <span class="hljs-keyword">catch</span> (UsernameNotFoundException notFound) {
+                logger.debug(<span class="hljs-string">&quot;User &apos;&quot;</span> + username + <span class="hljs-string">&quot;&apos; not found&quot;</span>);
+
+                <span class="hljs-keyword">if</span> (hideUserNotFoundExceptions) {
+                    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> BadCredentialsException(messages.getMessage(
+                            <span class="hljs-string">&quot;AbstractUserDetailsAuthenticationProvider.badCredentials&quot;</span>,
+                            <span class="hljs-string">&quot;Bad credentials&quot;</span>));
+                }
+                <span class="hljs-keyword">else</span> {
+                    <span class="hljs-keyword">throw</span> notFound;
+                }
+            }
+
+
+
+
+        <span class="hljs-keyword">try</span> {
+            preAuthenticationChecks.check(user);
+            additionalAuthenticationChecks(user,
+                    (UsernamePasswordAuthenticationToken) authentication);
+        }
+        <span class="hljs-keyword">catch</span> (AuthenticationException exception) {
+            <span class="hljs-keyword">if</span> (cacheWasUsed) {
+                <span class="hljs-comment">// There was a problem, so try again after checking</span>
+                <span class="hljs-comment">// we&apos;re using latest data (i.e. not from the cache)</span>
+                cacheWasUsed = <span class="hljs-keyword">false</span>;
+                user = retrieveUser(username,
+                        (UsernamePasswordAuthenticationToken) authentication);
+                preAuthenticationChecks.check(user);
+                additionalAuthenticationChecks(user,
+                        (UsernamePasswordAuthenticationToken) authentication);
+            }
+            <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">throw</span> exception;
+            }
+        }
+
+        postAuthenticationChecks.check(user);
+
+        <span class="hljs-keyword">if</span> (!cacheWasUsed) {
+            <span class="hljs-keyword">this</span>.userCache.putUserInCache(user);
+        }
+        Object principalToReturn = user;
+        <span class="hljs-keyword">if</span> (forcePrincipalAsString) {
+            principalToReturn = user.getUsername();
+        }
+        <span class="hljs-comment">// &#x521B;&#x5EFA;&#x8BA4;&#x8BC1;&#x4FE1;&#x606F;</span>
+        <span class="hljs-keyword">return</span> createSuccessAuthentication(principalToReturn, authentication, user);
+    }
+</code></pre>
+<p>6.&#x9605;&#x8BFB;DaoAuthenticationProviderde&#x7684;retrieveUser&#x65B9;&#x6CD5;</p>
+<pre><code class="lang-java">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">final</span> UserDetails <span class="hljs-title">retrieveUser</span><span class="hljs-params">(String username,
+            UsernamePasswordAuthenticationToken authentication)</span>
+            <span class="hljs-keyword">throws</span> AuthenticationException </span>{
+        prepareTimingAttackProtection();
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//&#x83B7;&#x53D6;UserDetailsService()&#x8C03;&#x7528;&#x5176;&#x7684;loadUserByUsername</span>
+            UserDetails loadedUser = <span class="hljs-keyword">this</span>.getUserDetailsService().loadUserByUsername(username);
+            <span class="hljs-keyword">if</span> (loadedUser == <span class="hljs-keyword">null</span>) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InternalAuthenticationServiceException(
+                        <span class="hljs-string">&quot;UserDetailsService returned null, which is an interface contract violation&quot;</span>);
+            }
+            <span class="hljs-keyword">return</span> loadedUser;
+        }
+        <span class="hljs-keyword">catch</span> (UsernameNotFoundException ex) {
+            mitigateAgainstTimingAttack(authentication);
+            <span class="hljs-keyword">throw</span> ex;
+        }
+        <span class="hljs-keyword">catch</span> (InternalAuthenticationServiceException ex) {
+            <span class="hljs-keyword">throw</span> ex;
+        }
+        <span class="hljs-keyword">catch</span> (Exception ex) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InternalAuthenticationServiceException(ex.getMessage(), ex);
+        }
+    }
+</code></pre>
+<h2 id="spring-security-&#x8BA4;&#x8BC1;&#x6D41;&#x7A0B;&#x603B;&#x7ED3;">Spring security &#x8BA4;&#x8BC1;&#x6D41;&#x7A0B;&#x603B;&#x7ED3;</h2>
+<p>&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x7684;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#x767B;&#x5F55;&#x6D41;&#x7A0B;:</p>
+<pre><code class="lang-txt">     1.UsernamePasswordAuthenticationFilter(&#x62E6;&#x622A;&#x6307;&#x5B9A;&#x8BF7;&#x6C42;)             -&gt;
+        2.UsernamePasswordAuthenticationToken(&#x5305;&#x88C5;&#x6210;&#x8FD9;&#x4E2A;&#x7C7B;&#x578B;&#x7684;token&#x53BB;&#x8BA4;&#x8BC1;)     -&gt;
+            3.AuthenticationManager(ProviderManager)(&#x5C1D;&#x8BD5;&#x5404;&#x79CD;&#x8BA4;&#x8BC1;)                -&gt;
+                4.DaoAuthenticationProvider(&#x786E;&#x5B9A;&#x8FD9;&#x4E2A;&#x7C7B;&#x8D1F;&#x8D23;&#x8BA4;&#x8BC1;)                          -&gt;
+                    5.UserDetailsService(&#x67E5;&#x627E;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x7528;&#x6765;&#x5BF9;&#x6BD4;&#x8BF7;&#x6C42;&#x53C2;&#x6570;)                           -&gt;
+                        6.&#x8FD4;&#x56DE;UserDetails(&#x7528;&#x6237;&#x4FE1;&#x606F;&#x5305;&#x88C5;&#x6210;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;)                                    -&gt;
+                            7.Success&#x5219;AuthenticatinSuccessHandler                                  -&gt;
+</code></pre>
+<h2 id="&#x81EA;&#x5B9A;&#x4E49;&#x5B9A;&#x5236;&#x5316;&#x767B;&#x5F55;&#x6D41;&#x7A0B;">&#x81EA;&#x5B9A;&#x4E49;&#x5B9A;&#x5236;&#x5316;&#x767B;&#x5F55;&#x6D41;&#x7A0B;</h2>
+<h3 id="&#x662F;&#x60F3;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x9A8C;&#x8BC1;&#x7801;&#x624B;&#x673A;&#x53F7;&#x767B;&#x5F55;&#x6307;&#x5B9A;ip&#x514D;&#x767B;&#x5F55;">&#x662F;&#x60F3;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x9A8C;&#x8BC1;&#x7801;+&#x624B;&#x673A;&#x53F7;&#x767B;&#x5F55;?&#x6307;&#x5B9A;IP&#x514D;&#x767B;&#x5F55;</h3>
+<p>&#x4EE5;&#x624B;&#x673A;&#x53F7;+&#x77ED;&#x4FE1;&#x9A8C;&#x8BC1;&#x7801;&#x4E3A;&#x4F8B;:</p>
+<pre><code class="lang-text">    &#x53C2;&#x8003;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#x767B;&#x5F55;&#x7684;&#x6D41;&#x7A0B;:
+
+        SmsCodeAuthenticationFilter(&#x9A8C;&#x8BC1;&#x9A8C;&#x767B;&#x5F55;&#x7684;&#x6D41;&#x7A0B;)  &#x223D;   UsernamePasswordAuthenticationFilter
+        SmsCodeAuthenticationToken(&#x9A8C;&#x8BC1;&#x7801;&#x767B;&#x5F55;&#x7684;Token)  &#x223D;   UsernamePasswordAuthenticationToken
+        SmsCOdeAuthenticationProvider(&#x8FD9;&#x4E2A;&#x7C7B;&#x6765;&#x8D1F;&#x8D23;&#x5177;&#x4F53;&#x8BA4;&#x8BC1;)  &#x223D;  DaoAuthenticationProvider
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="2.SpringSecurityOAuth2源码阅读.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 2.SpringSecurityOauth2核心源码">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1.SpringSecurity核心源码","level":"1.7.1.1","depth":3,"next":{"title":"2.SpringSecurityOauth2核心源码","level":"1.7.1.2","depth":3,"path":"Ch6.框架/1.SpringSecurity/2.SpringSecurityOAuth2源码阅读.md","ref":"Ch6.框架/1.SpringSecurity/2.SpringSecurityOAuth2源码阅读.md","articles":[]},"previous":{"title":"1.spring Security","level":"1.7.1","depth":2,"ref":"","articles":[{"title":"1.SpringSecurity核心源码","level":"1.7.1.1","depth":3,"path":"Ch6.框架/1.SpringSecurity/1.SpringSecurity源码阅读.md","ref":"Ch6.框架/1.SpringSecurity/1.SpringSecurity源码阅读.md","articles":[]},{"title":"2.SpringSecurityOauth2核心源码","level":"1.7.1.2","depth":3,"path":"Ch6.框架/1.SpringSecurity/2.SpringSecurityOAuth2源码阅读.md","ref":"Ch6.框架/1.SpringSecurity/2.SpringSecurityOAuth2源码阅读.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","livereload"],"pluginsConfig":{"expandable-chapters":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Ch6.框架/1.SpringSecurity/1.SpringSecurity源码阅读.md","mtime":"2020-05-30T13:01:43.072Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-30T13:07:34.651Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
